@@ -1,0 +1,64 @@
+/* --- Globale Einstellungen --- */
+* {
+    background-image: none;
+    box-shadow: none;
+}
+
+window {
+    /* Halbtransparenter Tokyo Night Hintergrund */
+    background-color: rgba(26, 27, 38, 0.85);
+}
+
+/* --- Die Buttons allgemein --- */
+button {
+    border-radius: 15px; /* Runde Ecken wie bei Niri */
+    border-color: #1a1b26;
+    text-decoration-color: #c0caf5;
+    color: #c0caf5;
+    background-color: #24283b; /* Button Hintergrund (Dunkelblau) */
+    border-style: solid;
+    border-width: 2px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 25%;
+    margin: 10px;
+    transition: box-shadow 0.2s ease-in-out, background-color 0.2s;
+}
+
+/* Hover-Effekt (Maus drüber) */
+button:hover {
+    background-color: #414868;
+    outline-style: none;
+    border-color: #7aa2f7; /* Blauer Rand beim Hover */
+    box-shadow: 0 0 10px 2px #7aa2f7; /* Leuchtender Schein */
+}
+
+button:focus {
+    background-color: #7aa2f7;
+    color: #1a1b26;
+}
+
+/* --- Icons zuweisen --- */
+/* Wir nutzen die Standard-Icons, die wlogout mitbringt */
+
+#lock {
+    background-image: image(url("/usr/share/wlogout/icons/lock.png"));
+}
+
+#logout {
+    background-image: image(url("/usr/share/wlogout/icons/logout.png"));
+}
+
+#suspend {
+    background-image: image(url("/usr/share/wlogout/icons/suspend.png"));
+}
+
+#shutdown {
+    background-image: image(url("/usr/share/wlogout/icons/shutdown.png"));
+    /* Optional: Shutdown Button leicht rötlich färben */
+    color: #f7768e;
+}
+
+#reboot {
+    background-image: image(url("/usr/share/wlogout/icons/reboot.png"));
+}

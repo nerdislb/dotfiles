@@ -1,0 +1,86 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 34,
+    "modules-left": ["niri/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right": ["cpu", "memory", "network", "bluetooth", "battery", "custom/power"],
+
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false,
+        "on-click": "kitty -e btop"
+    },
+    "memory": {
+        "format": "{}% ",
+        "on-click": "kitty -e btop"
+    },
+    
+    "niri/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "active": "󰮯",
+            "default": "·",
+            "urgent": "󰊠"
+        },
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": []
+        }
+    },
+    "clock": {
+        "format": "{:%H:%M  %d. %b}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>"
+    },
+    "network": {
+        "format-wifi": "󰤨  {essid}",
+        "format-ethernet": "󰈀  {ifname}",
+        "format-linked": "󰈀  {ifname} (No IP)",
+        "format-disconnected": "󰤮  Offline",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "on-click": "kitty -e nmtui"  // HIER: Öffnet nmtui im Kitty Terminal
+    },
+    "bluetooth": {
+        "format": "󰂯 {status}",
+        "format-connected": "󰂱 {device_alias}",
+        "format-connected-battery": "󰂱 {device_alias} {device_battery_percentage}%",
+        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+        "on-click": "blueman-manager"
+    },
+    "tray": {
+        "icon-size": 18,
+        "spacing": 10,
+        "ignore-list": [
+            "nm-applet",
+            "blueman-applet",
+            "blueman-tray",
+            "blueman",
+            "Blueman-applet",
+            "Blueman-tray",
+            "NetworkManager",
+            "NetworkManager Applet",
+            "network-manager-applet"
+        ]
+    },
+    "battery": {
+        "interval": 60,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}  {capacity}%",
+        "format-charging": " {capacity}% ({time})",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{icon} {time}",
+        "tooltip-format": "{time}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "custom/power": {
+      "format": " ",
+      "tooltip": false,
+      "on-click": "wlogout"
+    }
+}

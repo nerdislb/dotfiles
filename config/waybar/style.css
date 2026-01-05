@@ -1,0 +1,80 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "CaskaydiaCove Nerd Font";
+    font-size: 14px;
+    min-height: 0px;
+}
+
+window#waybar {
+    background: #1a1b26; /* Tokyo Night Background */
+    color: #c0caf5;
+    border-bottom: 0px solid #7aa2f7;
+}
+
+#workspaces button {
+    color: #565f89;
+    padding: 0 4px;
+    font-size: 14px;
+}
+
+#workspaces button.active {
+    color: #e0af68;
+    font-size: 20px;
+    padding: 0 8px;
+    margin-bottom: -2px;
+}
+
+/* Gemeinsames Design für alle rechten Module inkl. Battery */
+#clock, #cpu, #memory, #tray, #network, #bluetooth, #battery {
+    color: #7aa2f7;
+    font-weight: bold;
+    padding: 0 10px;
+}
+
+#network {
+    margin-left: 5px;
+}
+
+#bluetooth {
+    margin-right: 5px;
+}
+
+#battery {
+    /* Spezifische Einstellungen für Battery überschreiben teilweise das obige, aber Farbe bleibt Basis */
+    border-radius: 5px;
+}
+
+/* Farben für Status beibehalten oder anpassen?
+   User will "selbes Design wie der Rest", also blau.
+   Aber Warnungen sollten wohl farbig bleiben. */
+
+#battery.charging {
+    color: #9ece6a; /* Grün beim Laden */
+}
+
+#battery.warning {
+    color: #e0af68; /* Gelb bei Warnung */
+}
+
+#battery.critical {
+    color: #f7768e; /* Rot bei Kritisch */
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes blink {
+    to {
+        background-color: #f7768e;
+        color: #1a1b26;
+    }
+}
+
+#custom-power {
+    color: #c0caf5;
+    padding: 0 10px;
+    margin-right: 5px;
+}
