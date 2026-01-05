@@ -1,4 +1,5 @@
 // --- Niri Config ---
+
 config-notification {
     disable-failed
 }
@@ -49,11 +50,17 @@ layout {
 		}
 }
 
+	// Regel 1: Gilt für ALLE Fenster
 	window-rule {
-		// Runde Ecken fuer alle Fenster
 		geometry-corner-radius 0
 		clip-to-geometry true
-		}
+	}
+
+	// Regel 2: Gilt für Brave und alle Brave-Webapps
+	window-rule {
+		match app-id="^brave.*"
+		draw-border-with-background false
+	}
 
 // Autostart
 spawn-at-startup "waybar"
@@ -76,25 +83,25 @@ binds {
     Mod+Shift+D { spawn "sh" "-c" "grim -g \"$(slurp)\" - | swappy -f -"; }
   // === Webapps ===
     Mod+Shift+G hotkey-overlay-title="Webapp Google" {
-      spawn "/usr/bin/brave" "--password-store=basic" "--app=https://google.com";
+      spawn "/usr/bin/brave" "--ozone-platform-hint=auto" "--password-store=basic" "--app=https://google.com";
       }
     Mod+Shift+Y hotkey-overlay-title="Webapp Youtube" {
-      spawn "/usr/bin/brave" "--password-store=basic" "--app=https://www.Youtube.com";
+      spawn "/usr/bin/brave" "--ozone-platform-hint=auto" "--password-store=basic" "--app=https://www.Youtube.com";
       }
     Mod+Shift+S hotkey-overlay-title="Webapp Twitch" {
-      spawn "/usr/bin/brave" "--password-store=basic" "--app=https://twitch.tv";
+      spawn "/usr/bin/brave" "--ozone-platform-hint=auto" "--password-store=basic" "--app=https://twitch.tv";
       }
     Mod+Shift+A hotkey-overlay-title="Webapp Gemini" {
-      spawn "/usr/bin/brave" "--password-store=basic" "--app=https://gemini.google.com";
+      spawn "/usr/bin/brave" "--ozone-platform-hint=auto" "--password-store=basic" "--app=https://gemini.google.com";
       } 
     Mod+Shift+W hotkey-overlay-title="Webapp Whatsapp" {
-      spawn "/usr/bin/brave" "--password-store=basic" "--app=https://web.whatsapp.com";
+      spawn "/usr/bin/brave" "--ozone-platform-hint=auto" "--password-store=basic" "--app=https://web.whatsapp.com";
       }
     Mod+Shift+M hotkey-overlay-title="Webapp Music" {
-      spawn "/usr/bin/brave" "--password-store=basic" "--app=https://music.youtube.com";
+      spawn "/usr/bin/brave" "--ozone-platform-hint=auto" "--password-store=basic" "--app=https://music.youtube.com";
       }
     Mod+Shift+C hotkey-overlay-title="Webapp Kalender" {
-      spawn "/usr/bin/brave" "--password-store=basic" "--app=https://www.icloud.com/calendar";
+      spawn "/usr/bin/brave" "--ozone-platform-hint=auto" "--password-store=basic" "--app=https://www.icloud.com/calendar";
       }
  // === Window Management ===
     Mod+Q repeat=false { close-window; }
