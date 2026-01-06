@@ -71,13 +71,55 @@ spawn-at-startup "blueman-applet"
 spawn-at-startup "nm-applet"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-at-startup "xwayland-satellite"
-//keybindings
+environment {
+  XDG_CURRENT_DESKTOP "niri"
+  QT_QPA_PLATFORM "wayland"
+  ELECTRON_OZONE_PLATFORM_HINT "auto"
+  QT_QPA_PLATFORMTHEME "gtk3"
+  QT_QPA_PLATFORMTHEME_QT6 "gtk3"
+  TERMINAL "alacritty"
+}
+prefer-no-csd
+animations {
+    workspace-switch {
+        spring damping-ratio=0.80 stiffness=523 epsilon=0.0001
+    }
+    window-open {
+        duration-ms 150
+        curve "ease-out-expo"
+    }
+    window-close {
+        duration-ms 150
+        curve "ease-out-quad"
+    }
+    horizontal-view-movement {
+        spring damping-ratio=0.85 stiffness=423 epsilon=0.0001
+    }
+    window-movement {
+        spring damping-ratio=0.75 stiffness=323 epsilon=0.0001
+    }
+    window-resize {
+        spring damping-ratio=0.85 stiffness=423 epsilon=0.0001
+    }
+    config-notification-open-close {
+        spring damping-ratio=0.65 stiffness=923 epsilon=0.001
+    }
+    screenshot-ui-open {
+        duration-ms 200
+        curve "ease-out-quad"
+    }
+    overview-open-close {
+        spring damping-ratio=0.85 stiffness=800 epsilon=0.0001
+    }
+}
 
+//keybindings
 binds {
 	Mod+Shift+E { quit; }
 	Mod+Return { spawn "alacritty"; }
 	Mod+Space { spawn "fuzzel"; }
   Mod+Alt+T { spawn "theme-selector"; }
+  Mod+E { spawn "yazi"; }
   // Screenshot Workflow: Bereich wählen -> Foto machen -> Editor öffnen
     Print { spawn "sh" "-c" "grim -g \"$(slurp)\" - | swappy -f -"; }
     
