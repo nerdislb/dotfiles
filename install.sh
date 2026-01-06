@@ -100,6 +100,7 @@ link_config "themes"
 link_config "hypr"
 link_config "alacritty"
 link_config "zellij"
+link_config "fastfetch"
 
 # Link scripts
 link_script "volume-control"
