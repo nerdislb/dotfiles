@@ -103,7 +103,7 @@ window-rule {
 // Autostart
 spawn-at-startup "waybar" 
 spawn-at-startup "swww-daemon"
-//spawn-at-startup "mako"
+spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
 spawn-at-startup "swaync"
 spawn-at-startup "blueman-applet"
 spawn-at-startup "nm-applet"
@@ -157,11 +157,15 @@ binds {
 	Mod+Return { spawn "alacritty"; }
 	Mod+Space { spawn "fuzzel"; }
   Mod+Alt+T { spawn "theme-selector"; }
-  Mod+E { spawn "yazi"; }
+  Mod+B hotkey-overlay-title="Open Zen Browser" { spawn "gtk-launch" "zen.desktop"; }
+  Mod+E hotkey-overlay-title="Open Filemanager" { spawn "kitty" "yazi"; }
+  Mod+D { spawn "niri" "msg" "action" "toggle-overview"; }
+    Mod+Tab repeat=false { toggle-overview; }
+    Mod+Shift+Slash { show-hotkey-overlay; }
   // Screenshot Workflow: Bereich wählen -> Foto machen -> Editor öffnen
     Print { spawn "sh" "-c" "grim -g \"$(slurp)\" - | swappy -f -"; }
     
-    // Alternative: Super + Shift + S (falls du keine Druck-Taste hast)
+    // Alternative: Super + Shift + D (falls du keine Druck-Taste hast)
     Mod+Shift+D { spawn "sh" "-c" "grim -g \"$(slurp)\" - | swappy -f -"; }
   // === Webapps ===
     Mod+Shift+G hotkey-overlay-title="Webapp Google" {
