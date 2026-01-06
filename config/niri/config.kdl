@@ -88,6 +88,12 @@ window-rule {
     match app-id="zoom"
     open-floating true
 }
+window-rule {
+    match app-id="org.omarchy.screensaver"
+    open-fullscreen true
+    draw-border-with-background false
+    default-column-width { proportion 1.0; }
+}
 	// Regel 1: Gilt für ALLE Fenster
 	window-rule {
 		geometry-corner-radius 0
@@ -101,6 +107,7 @@ window-rule {
 	}
 
 // Autostart
+spawn-at-startup "hypridle"
 spawn-at-startup "waybar" 
 spawn-at-startup "swww-daemon"
 spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
