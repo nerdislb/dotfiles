@@ -50,6 +50,14 @@ layout {
 		}
 }
 window-rule {
+    match app-id="swaync"
+    match app-id="com.github.ErikReider.SwayNotificationCenter"
+    open-floating true
+    draw-border-with-background false
+    focus-ring { off; }
+}
+
+window-rule {
     match app-id=r#"^org\.gnome\."#
     draw-border-with-background false
     geometry-corner-radius 0
@@ -118,7 +126,6 @@ spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "/usr/lib/kdeconnectd"
 spawn-at-startup "kdeconnect-indicator"
-spawn-at-startup "swaync"
 environment {
   XDG_CURRENT_DESKTOP "niri"
   QT_QPA_PLATFORM "wayland"
@@ -163,6 +170,9 @@ animations {
 
 //keybindings
 binds {
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "/home/nerdi/.local/bin/volume-control" "up"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "/home/nerdi/.local/bin/volume-control" "down"; }
+    XF86AudioMute        allow-when-locked=true { spawn "/home/nerdi/.local/bin/volume-control" "mute"; }
 	Mod+Shift+E { quit; }
 	Mod+Return { spawn "alacritty"; }
 	Mod+Space { spawn "fuzzel"; }
