@@ -3,25 +3,124 @@
   "logo": {
     "source": "arch",
     "padding": {
-      "top": 1
+      "top": 1,
+      "left": 2
+    },
+    "color": {
+      "1": "blue"
+    }
+  },
+  "display": {
+    "separator": "  ",
+    "color": {
+      "keys": "blue"
+    },
+    "size": {
+      "binary_prefix": "si"
     }
   },
   "modules": [
-    "title",
-    "separator",
-    "os",
-    "host",
-    "kernel",
-    "uptime",
-    "packages",
-    "shell",
-    "display",
-    "de",
-    "wm",
-    "terminal",
-    "cpu",
-    "gpu",
-    "memory",
+    {
+      "type": "title",
+      "color": {
+        "user": "cyan",
+        "at": "white",
+        "host": "blue"
+      }
+    },
+    {
+        "type": "custom",
+        "format": "──────────────────────────────",
+        "outputColor": "black"
+    },
+    {
+      "type": "os",
+      "key": " OS",
+      "keyColor": "blue"
+    },
+    {
+      "type": "kernel",
+      "key": " Kernel",
+      "keyColor": "blue"
+    },
+    {
+      "type": "command",
+      "key": "󱑎 Installed",
+      "keyColor": "blue",
+      "text": "head -n1 /var/log/pacman.log | cut -d' ' -f1 | tr -d '[]' | cut -d'T' -f1"
+    },
+    {
+      "type": "command",
+      "key": "󰔚 System Age",
+      "keyColor": "blue",
+      "text": "echo $(( ( $(date +%s) - $(date -d $(head -n1 /var/log/pacman.log | cut -d' ' -f1 | tr -d '[]' | cut -d'T' -f1) +%s) ) / 86400 )) days"
+    },
+    {
+      "type": "uptime",
+      "key": " Uptime",
+      "keyColor": "blue"
+    },
+    {
+      "type": "datetime",
+      "key": " Date",
+      "keyColor": "blue",
+      "format": "{1}-{3}-{11}"
+    },
+    {
+      "type": "packages",
+      "key": " Packages",
+      "keyColor": "blue"
+    },
+    {
+        "type": "custom",
+        "format": "──────────────────────────────",
+        "outputColor": "black"
+    },
+    {
+      "type": "wm",
+      "key": " WM",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "terminal",
+      "key": " Terminal",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "shell",
+      "key": " Shell",
+      "keyColor": "magenta"
+    },
+    {
+        "type": "custom",
+        "format": "──────────────────────────────",
+        "outputColor": "black"
+    },
+    {
+      "type": "cpu",
+      "key": " CPU",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "gpu",
+      "key": " GPU",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "memory",
+      "key": " Memory",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "disk",
+      "key": " Disk",
+      "keyColor": "cyan"
+    },
+    {
+        "type": "custom",
+        "format": "──────────────────────────────",
+        "outputColor": "black"
+    },
     "break",
     "colors"
   ]
