@@ -12,6 +12,13 @@ window#waybar {
     border-bottom: 0px solid #7aa2f7;
 }
 
+#custom-launcher {
+    color: #7aa2f7;
+    font-size: 18px;
+    padding: 0 10px 0 10px;
+    margin-right: 5px;
+}
+
 #workspaces button {
     color: #565f89;
     padding: 0 4px;
@@ -26,7 +33,7 @@ window#waybar {
 }
 
 /* Gemeinsames Design für alle rechten Module inkl. Battery */
-#clock, #cpu, #memory, #tray, #network, #bluetooth, #battery {
+#clock, #cpu, #memory, #tray, #network, #bluetooth, #battery, #custom-notification {
     color: #7aa2f7;
     font-weight: bold;
     padding: 0 10px;
@@ -77,4 +84,5 @@ window#waybar {
     color: #c0caf5;
     padding: 0 10px;
     margin-right: 5px;
+    margin-left: 10px;
 }
