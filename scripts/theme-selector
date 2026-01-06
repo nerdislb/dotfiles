@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Configuration
+THEME_DIR="$HOME/.config/themes"
+
+# Ensure theme directory exists
+if [ ! -d "$THEME_DIR" ]; then
+    mkdir -p "$THEME_DIR"
+fi
+
+# Select theme using fuzzel
+# -d: dmenu mode (read from stdin)
+# -p: prompt
+THEME=$(ls "$THEME_DIR" | fuzzel -d -p "󰔉 Theme: " --width 30 --lines 10)
+
+if [ -z "$THEME" ]; then
+    exit 0
+fi
+
+# Path to the apply script
+SCRIPT="$THEME_DIR/$THEME/apply.sh"
+
+if [ -f "$SCRIPT" ]; then
+    chmod +x "$SCRIPT"
+    "$SCRIPT"
+    notify-send "Theme Changed" "Applied theme: $THEME"
+else
+    notify-send -u critical "Theme Error" "No apply.sh found in $THEME"
+fi

@@ -1,0 +1,97 @@
+/* ~/.config/swaync/style.css */
+
+/* --- Tokyo Night Colors & Square Design --- */
+
+/* Das Hauptfenster (Control Center) */
+.control-center {
+    background: #1a1b26; /* Dunkler Hintergrund */
+    color: #c0caf5;      /* Helle Schrift */
+    border: 2px solid #7aa2f7; /* Blauer Rand */
+    border-radius: 0px;  /* ECKIG */
+}
+
+/* Das Widget (der Hintergrund allgemein) */
+.widget-title {
+    color: #7aa2f7;
+    background: #1a1b26;
+}
+
+.widget-label {
+    font-size: 16px;
+    color: #c0caf5;
+}
+
+.notification {
+    background: #1a1b26; /* Dunklerer Hintergrund (Night) */
+    color: #c0caf5;
+    border: 2px solid #7aa2f7;
+    border-radius: 0px; /* ECKIG */
+    padding: 10px;
+    box-shadow: 0 0 8px 0 rgba(0,0,0,0.5);
+}
+
+.notification-row {
+    background: transparent;
+    outline: none;
+    margin-bottom: 5px;
+}
+
+.notification-content {
+    background: #1a1b26;
+    color: #c0caf5;
+}
+
+.summary {
+    font-size: 16px;
+    font-weight: bold;
+    color: #7aa2f7;
+}
+
+.body {
+    font-size: 14px;
+    color: #a9b1d6;
+}
+
+/* Buttons in der Benachrichtigung */
+.notification-action {
+    color: #1a1b26;
+    background: #7aa2f7;
+    border: none;
+    border-radius: 0px; /* ECKIG */
+}
+
+/* --- Volume / Brightness Progress Bar --- */
+
+.notification-row .notification-content .body {
+    color: #c0caf5;
+}
+
+/* Hide app name for volume notifications if desired, or style it */
+/* 
+.notification-row:has(.app-name { content: "Volume"; }) .app-name {
+    display: none; 
+}
+*/
+
+progressbar,
+progress,
+trough {
+    border-radius: 0px;
+}
+
+progressbar {
+    box-shadow: none;
+}
+
+/* The background of the bar */
+trough {
+    background: #1a1b26;
+    border: 1px solid #7aa2f7;
+    min-height: 10px;
+}
+
+/* The filled part of the bar */
+progress {
+    background: #7aa2f7;
+    min-height: 10px;
+}

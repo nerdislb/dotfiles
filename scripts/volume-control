@@ -1,0 +1,29 @@
+#!/bin/bash
+
+if command -v swayosd-client &> /dev/null; then
+    case "$1" in
+        up) swayosd-client --output-volume raise --max-volume 150 ;;
+        down) swayosd-client --output-volume lower --max-volume 150 ;;
+        mute) swayosd-client --output-volume mute-toggle ;;
+    esac
+else
+    step=5
+    get_volume() { wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk "{print int(\$2 * 100)}"; }
+    get_mute() { wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q "MUTED"; }
+    case "$1" in
+        up) wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ ${step}%+ ;;
+        down) wpctl set-volume @DEFAULT_AUDIO_SINK@ ${step}%- ;;
+        mute) wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle ;;
+    esac
+    current_vol=$(get_volume)
+    if get_mute; then
+        icon="audio-volume-muted-symbolic"
+        text="Muted"
+    else
+        text="${current_vol}%"
+        if [ "$current_vol" -lt 30 ]; then icon="audio-volume-low-symbolic";
+        elif [ "$current_vol" -lt 70 ]; then icon="audio-volume-medium-symbolic";
+        else icon="audio-volume-high-symbolic"; fi
+    fi
+    notify-send -a "Volume" -i "$icon" -h string:x-canonical-private-synchronous:volume -h int:value:"$current_vol" -t 1500 "Volume" "$text"
+fi

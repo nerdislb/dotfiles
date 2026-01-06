@@ -61,10 +61,11 @@ firefox
 firefox-i18n-de
 fsarchiver
 fuzzel
-gdm
 gemini-cli
 git
 glances
+greetd
+greetd-regreet
 grim
 grub
 grub-btrfs-support
@@ -78,6 +79,7 @@ haveged
 hdparm
 hwdetect
 hwinfo
+hyprlock
 inetutils
 intel-media-driver
 intel-media-sdk
@@ -175,6 +177,7 @@ swappy
 swaybg
 swaylock
 swaync
+swayosd
 switcheroo-control
 swww
 sysfsutils

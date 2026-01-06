@@ -42,6 +42,8 @@ echo "Linking configurations..."
 
 CONFIG_DIR="$HOME/.config"
 DOTFILES_DIR="$(pwd)/config"
+SCRIPTS_DIR="$(pwd)/scripts"
+BIN_DIR="$HOME/.local/bin"
 
 # Helper function to link directories
 link_config() {
@@ -50,14 +52,17 @@ link_config() {
     local target_path="$CONFIG_DIR/$app_name"
 
     if [ -d "$source_path" ]; then
-        if [ -d "$target_path" ] && [ ! -L "$target_path" ]; then
-            echo "Backing up existing $app_name config..."
-            mv "$target_path" "${target_path}.bak"
-        fi
-        
-        # Create parent dir if it doesn't exist (unlikely for .config but good practice)
+        # Create parent dir if it doesn't exist
         mkdir -p "$CONFIG_DIR"
 
+        if [ -d "$target_path" ] && [ ! -L "$target_path" ]; then
+            echo "Backing up existing $app_name config..."
+            mv "$target_path" "${target_path}.bak.$(date +%s)"
+        elif [ -L "$target_path" ]; then
+            echo "Updating link for $app_name..."
+            rm "$target_path"
+        fi
+        
         echo "Linking $app_name..."
         ln -sf "$source_path" "$target_path"
     else
@@ -65,12 +70,61 @@ link_config() {
     fi
 }
 
-# Link specific applications
+# Helper function to link scripts
+link_script() {
+    local script_name=$1
+    local source_path="$SCRIPTS_DIR/$script_name"
+    local target_path="$BIN_DIR/$script_name"
+
+    if [ -f "$source_path" ]; then
+        mkdir -p "$BIN_DIR"
+        chmod +x "$source_path"
+        echo "Linking script $script_name..."
+        ln -sf "$source_path" "$target_path"
+    else
+        echo "Warning: Script $script_name not found in dotfiles."
+    fi
+}
+
+# Link applications
 link_config "waybar"
 link_config "btop"
 link_config "kitty"
 link_config "fish"
 link_config "niri"
 link_config "wlogout"
+link_config "swaync"
+link_config "fuzzel"
+link_config "swayosd"
+link_config "themes"
+link_config "hypr"
+link_config "alacritty"
+link_config "zellij"
 
-echo "Installation complete! Please restart your shell or session."
+# Link scripts
+link_script "volume-control"
+link_script "theme-selector"
+
+# 7. Post-Install Setup
+echo "Performing post-install setup..."
+
+# Enable Greeter (Greetd) if installed
+if systemctl list-unit-files | grep -q greetd.service; then
+    echo "Enabling greetd service..."
+    sudo systemctl enable greetd.service
+    # Disable GDM if present to avoid conflicts (forcefully)
+    if systemctl is-enabled gdm.service &>/dev/null; then
+        sudo systemctl disable gdm.service
+    fi
+fi
+
+# Enable User Services
+echo "Enabling user services..."
+systemctl --user enable --now swaync.service
+systemctl --user enable --now swayosd-libinput.backend.service
+
+# Setup Themes
+echo "Setting up TokyoNight Theme permissions..."
+chmod +x "$CONFIG_DIR/themes/TokyoNight/apply.sh"
+
+echo "Installation complete! Please restart your system or log out to see all changes."
