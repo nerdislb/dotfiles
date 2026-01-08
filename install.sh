@@ -106,7 +106,23 @@ link_config "fastfetch"
 link_script "volume-control"
 link_script "theme-selector"
 
-# 7. Post-Install Setup
+# 7. System Configurations (Requires Sudo)
+echo "Configuring system-wide settings..."
+
+# Ly Display Manager Config
+if command -v ly &> /dev/null; then
+    echo "Configuring Ly..."
+    if [ -f "$DOTFILES_DIR/ly/config.ini" ]; then
+        echo "Linking Ly config..."
+        sudo ln -sf "$DOTFILES_DIR/ly/config.ini" /etc/ly/config.ini
+    fi
+    # Ensure Ly service is enabled
+    sudo systemctl enable ly.service
+    sudo systemctl disable greetd.service 2>/dev/null
+    sudo systemctl disable gdm.service 2>/dev/null
+fi
+
+# 8. Post-Install Setup
 echo "Performing post-install setup..."
 
 # Enable Greeter (Greetd) if installed
