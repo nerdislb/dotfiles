@@ -105,6 +105,7 @@ link_config "fastfetch"
 # Link scripts
 link_script "volume-control"
 link_script "theme-selector"
+link_script "powermenu"
 
 # 7. System Configurations (Requires Sudo)
 echo "Configuring system-wide settings..."

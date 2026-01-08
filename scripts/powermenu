@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+# Optionen definieren (mit Icons für den Look)
+SELECTION="$(echo -e "  Sperren\n󰍃  Abmelden\n󰤄  Standby\n󰜉  Neustart\n  Ausschalten" | fuzzel --dmenu --prompt=\" Powermenu: \" --lines=5 --width=25)"
+
+case "$SELECTION" in
+    *Sperren)
+        hyprlock
+        ;;
+    *Abmelden)
+        loginctl terminate-user $USER
+        ;;
+    *Standby)
+        systemctl suspend
+        ;;
+    *Neustart)
+        systemctl reboot
+        ;;
+    *Ausschalten)
+        systemctl poweroff
+        ;;
+esac

@@ -9,20 +9,30 @@ window {
     background-color: rgba(26, 27, 38, 0.85);
 }
 
+grid {
+    background-color: transparent;
+    margin: 150px; /* Hier den Abstand nach aussen einstellen */
+    
+  }
+
 /* --- Die Buttons allgemein --- */
 button {
-    border-radius: 15px; /* Runde Ecken wie bei Niri */
+    border-radius: 0px; /* Eckig wie bei Niri */
     border-color: #1a1b26;
     text-decoration-color: #c0caf5;
     color: #c0caf5;
-    background-color: #24283b; /* Button Hintergrund (Dunkelblau) */
+    background-color: #24283b;
     border-style: solid;
     border-width: 2px;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 25%;
-    margin: 10px;
+    background-size: 25%; /* Icon-Groesse innerhalb des Buttons */
+    margin: 10px; /* Abstand zwischen den Buttons */
     transition: box-shadow 0.2s ease-in-out, background-color 0.2s;
+
+    /* Feste Groessen */
+    min-width: 50px;
+    min-height: 150px;
 }
 
 /* Hover-Effekt (Maus drüber) */
