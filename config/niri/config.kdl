@@ -4,7 +4,7 @@ config-notification {
     disable-failed
 }
 // Outputs from existing configuration
- output "DP-8" {
+ output "DP-5" {
     mode "1920x1080@179.998" // Set resolution and refresh rate
     scale 1 // No scaling (use 2 for HiDPI)
 }
