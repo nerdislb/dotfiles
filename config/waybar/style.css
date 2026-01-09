@@ -33,7 +33,7 @@ window#waybar {
 }
 
 /* Gemeinsames Design für alle rechten Module inkl. Battery */
-#clock, #cpu, #memory, #tray, #network, #bluetooth, #battery, #custom-notification {
+#clock, #cpu, #memory, #tray, #network, #bluetooth, #pulseaudio, #battery, #custom-notification {
     color: #7aa2f7;
     font-weight: bold;
     padding: 0 10px;

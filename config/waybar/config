@@ -4,7 +4,7 @@
     "height": 34,
     "modules-left": ["custom/launcher", "niri/workspaces"],
     "modules-center": ["clock"],
-    "modules-right": ["cpu", "memory", "network", "bluetooth", "battery", "tray", "custom/notification", "custom/power"],
+    "modules-right": ["cpu", "memory", "network", "bluetooth", "pulseaudio", "battery", "tray", "custom/notification", "custom/power"],
 
     "custom/launcher": {
         "format": "",
@@ -53,6 +53,14 @@
         "format-connected-battery": "󰂱 {device_alias} {device_battery_percentage}%",
         "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
         "on-click": "blueman-manager"
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰝟 Muted",
+        "format-icons": {
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "on-click": "pavucontrol"
     },
     "tray": {
         "icon-size": 18,
