@@ -66,11 +66,6 @@ window#waybar {
 
 #battery.critical {
     color: #f7768e; /* Rot bei Kritisch */
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
 }
 
 @keyframes blink {

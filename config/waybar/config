@@ -4,7 +4,7 @@
     "height": 34,
     "modules-left": ["custom/launcher", "niri/workspaces"],
     "modules-center": ["clock"],
-    "modules-right": ["cpu", "memory", "network", "bluetooth", "battery", "custom/notification", "custom/power"],
+    "modules-right": ["cpu", "memory", "network", "bluetooth", "battery", "tray", "custom/notification", "custom/power"],
 
     "custom/launcher": {
         "format": "",
@@ -25,8 +25,7 @@
         "format": "{icon}",
         "format-icons": {
             "active": "󰮯",
-            "default": "·",
-            "urgent": "󰊠"
+            "default": "󰊠"
         },
         "persistent-workspaces": {
             "1": [],
@@ -46,7 +45,7 @@
         "format-linked": "󰈀  {ifname} (No IP)",
         "format-disconnected": "󰤮  Offline",
         "tooltip-format": "{ifname} via {gwaddr}",
-        "on-click": "kitty -e nmtui"  // HIER: Öffnet nmtui im Kitty Terminal
+        "on-click": "kitty -e nmtui"
     },
     "bluetooth": {
         "format": "󰂯 {status}",
@@ -60,21 +59,15 @@
         "spacing": 10,
         "ignore-list": [
             "nm-applet",
-            "blueman-applet",
-            "blueman-tray",
             "blueman",
-            "Blueman-applet",
-            "Blueman-tray",
-            "NetworkManager",
-            "NetworkManager Applet",
-            "network-manager-applet"
+            "Netzwerk"
         ]
     },
     "battery": {
         "interval": 60,
         "states": {
-            "warning": 30,
-            "critical": 15
+            "warning": 20,
+            "critical": 10
         },
         "format": "{icon}  {capacity}%",
         "format-charging": " {capacity}% ({time})",
@@ -104,7 +97,7 @@
     "return-type": "json",
     "exec-if": "which swaync-client",
     "exec": "swaync-client -swb",
-    "on-click": "swaync-client -t -sw",  // <-- Öffnet das Center
+    "on-click": "swaync-client -t -sw",
     "on-click-right": "swaync-client -d -sw",
     "escape": true
       }
