@@ -4,7 +4,24 @@
     "height": 34,
     "modules-left": ["custom/launcher", "niri/workspaces"],
     "modules-center": ["clock"],
-    "modules-right": ["cpu", "memory", "network", "bluetooth", "pulseaudio", "battery", "tray", "custom/notification", "custom/power"],
+    "modules-right": ["group/tray-drawer", "cpu", "memory", "network", "bluetooth", "pulseaudio", "battery", "custom/notification", "custom/power"],
+
+    "group/tray-drawer": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 500,
+            "children-class": "tray-content",
+            "transition-left-to-right": false
+        },
+        "modules": [
+            "custom/arrow",
+            "tray"
+        ]
+    },
+    "custom/arrow": {
+        "format": "",
+        "tooltip": false
+    },
 
     "custom/launcher": {
         "format": "",
@@ -26,14 +43,8 @@
         "format-icons": {
             "active": "󰮯",
             "default": "󰊠"
-        },
-        "persistent-workspaces": {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": [],
-            "5": []
         }
+        
     },
     "clock": {
         "format": "{:%H:%M  %d. %b}",
@@ -65,7 +76,7 @@
     "tray": {
         "icon-size": 18,
         "spacing": 10,
-        "ignore-list": [
+        "exclude": [
             "nm-applet",
             "blueman",
             "Netzwerk"

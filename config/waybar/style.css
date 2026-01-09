@@ -32,11 +32,21 @@ window#waybar {
     margin-bottom: -2px;
 }
 
-/* Gemeinsames Design für alle rechten Module inkl. Battery */
-#clock, #cpu, #memory, #tray, #network, #bluetooth, #pulseaudio, #battery, #custom-notification {
+/* Gemeinsames Design für alle rechten Module inkl. Battery, Tray und Arrow */
+#clock, #cpu, #memory, #tray, #network, #bluetooth, #pulseaudio, #battery, #custom-notification, #custom-arrow {
     color: #7aa2f7;
     font-weight: bold;
     padding: 0 10px;
+}
+
+/* Style für die Schublade (wenn ausgeklappt) */
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #f7768e;
 }
 
 #network {
